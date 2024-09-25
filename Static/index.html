@@ -10,23 +10,44 @@
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css" />
-
 </head>
 
 <body>
-    <h1>Wildvision</h1>
-    <button id="toggleWeatherCircles">Weather</button>
-    <button id="toggleBehaviourCircles">Animal Behaviour</button>
-    <!-- <div id="display-data"></div> -->
-    <div id="map"></div>
-    <button id="todaymorning">Today Morning</button>
-    <button id="todayafternoon">Today Afternoon</button>
-    <button id="tomorrowmorning">Tomorrow Morning</button>
-    <button id="tomorrowafternoon">Tomorrow Afternoon</button>
-    <button id="twodaysmorning">Two Days Morning</button>
-    <button id="twodaysafternoon">Two Days Afternoon</button>
+
+    <!-- Header container: Logo and Input box aligned side by side -->
+    <div id="header-container">
+        <!-- Logo Section -->
+        <img id="logo" src="IMG_0193.png" alt="Logo">
+        
+        <div id="static_text_box">General animal behaviour notes</div>
+    </div>
+
+    <!-- Main container with adjustable background -->
+    <div id="container">
+        <!-- Buttons above the map -->
+        <div id="top-buttons">
+            <button id="toggleWeatherCircles">Weather</button>
+            <button id="toggleBehaviourCircles">Animal Behaviour</button>
+        </div>
+        <!-- Time buttons beneath the map -->
+        <div id="bottom-buttons">
+            <button id="todaymorning">Today Morning</button>
+            <button id="todayafternoon">Today Afternoon</button>
+            <button id="tomorrowmorning">Tomorrow Morning</button>
+            <button id="tomorrowafternoon">Tomorrow Afternoon</button>
+            <button id="twodaysmorning">Two Days Morning</button>
+            <button id="twodaysafternoon">Two Days Afternoon</button>
+        <!-- Map Section -->
+        <div id="map"></div>
+
+
+        </div>
+    </div>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="./script.js" ></script>
+    <script src="./script.js"></script>
+    
 </body>
 </html>
+

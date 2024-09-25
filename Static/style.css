@@ -2,32 +2,60 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Wrapper for the logo and text box aligned side by side */
+#header-container {
+    display: flex;
+    align-items: center; /* Align logo and input vertically in the middle */
+    justify-content: space-between; /* Space between the logo and input */
+    background-color: var(--container-bg-color, #2b2929); /* Adjustable background */
+    padding: 20px
+}
+
+
+/* Adjust the logo size */
+#logo {
+    width: var(--logo-width, 250px); /* Adjustable logo width */
+    height: auto;
+}
+
+/* Styling for the static text box */
+#static_text_box {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px; /* You can adjust the width */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Light background color to mimic input box */
+    color: #ffffff; /* White text color */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    background-color: #333; /* Optional: Dark background to contrast with white text */
+}
+
+/* Wrapper/container for map and buttons with adjustable background */
+#container {
+    background-color: var(--container-bg-color, #2b2929); /* Adjustable background */
+}
+
+/* Container for the map */
 #map {
     width: 100%;
     height: 600px;
-    /* position: relative; */
-    background-color: #e0e0e0;
+    background-color: var(--background-color, #252424); /* Adjustable map background */}
+
+/* Customizable button styles */
+button {
+    padding: var(--button-padding, 10px 20px); /* Adjustable size */
+    font-size: var(--button-font-size, 16px); /* Adjustable font size */
+    background-color: var(--button-bg-color, rgb(210, 154, 66)); /* Adjustable background color */
+    color: var(--button-text-color, rgb(15, 10, 5)); /* Adjustable text color */
+    border: var(--button-border, 2px solid black); /* Adjustable border */
+    border-radius: var(--button-border-radius, 5px); /* Adjustable border radius */
+    cursor: pointer;
+    margin: 10px;
 }
 
-.hexagon {
-    position: absolute;
-    width: 50px;
-    height: 57.74px; /* sqrt(3) * width / 2 */
-    background-color: green;
-    clip-path: polygon(
-        50% 0%, 100% 25%, 100% 75%, 
-        50% 100%, 0% 75%, 0% 25%
-    );
-}
-
-.green {
-    background-color: green;
-}
-
-.orange {
-    background-color: orange;
-}
-
-.red {
-    background-color: red;
+button:hover {
+    opacity: 0.8;
 }

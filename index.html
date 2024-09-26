@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildvision</title>
 
+    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -19,7 +20,7 @@
         <!-- Logo Section -->
         <img id="logo" src="IMG_0193.png" alt="Logo">
         
-        <div id="static_text_box">Tahr are feeding the spring growth around the 900m elevation mark</div>
+        <div id="static_text_box">General animal behaviour notes</div>
     </div>
 
     <!-- Main container with adjustable background -->
@@ -28,6 +29,7 @@
         <div id="top-buttons">
             <button id="toggleWeatherCircles">Weather</button>
             <button id="toggleBehaviourCircles">Animal Behaviour</button>
+            <button id="infoButton">Info</button> <!-- Added Info button -->
         </div>
 
         <!-- Day and Time Selection Display -->
@@ -42,6 +44,16 @@
 
         <!-- Map Section -->
         <div id="map"></div>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Welcome to Wildvision</h2>
+            <p>Wildvision give you the information you need to increase you hunt successes. You will see 2 overlays, weather and animal behaviour. Each overlay works on a traffic light system. For weather, green = huntable conditions, orange = marginal and red = you should earn brownie points. For Animal behaviour green = areas with high animal movements, organge = medium animal movements and red = minimal movement.The animal behaviour overlay is designed to let you know what animals are doing if they are there.
+            </p>
+        </div>
     </div>
 
     <!-- Leaflet JS -->
@@ -67,6 +79,33 @@
         timeSlider.addEventListener('input', function() {
             dayTimeText.textContent = timeOptions[this.value];
         });
+
+        // Modal Popup Logic
+        const modal = document.getElementById('popupModal');
+        const infoButton = document.getElementById('infoButton');
+        const closeModal = document.querySelector('.close');
+
+        // Show the modal when the page loads
+        window.onload = function() {
+            modal.style.display = 'block';
+        }
+
+        // When the user clicks the "Info" button, show the modal
+        infoButton.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        // When the user clicks on the close button (x), hide the modal
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>

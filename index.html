@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildvision</title>
-    
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -29,24 +29,44 @@
             <button id="toggleWeatherCircles">Weather</button>
             <button id="toggleBehaviourCircles">Animal Behaviour</button>
         </div>
-        <!-- Time buttons beneath the map -->
-        <div id="bottom-buttons">
-            <button id="todaymorning">Today Morning</button>
-            <button id="todayafternoon">Today Afternoon</button>
-            <button id="tomorrowmorning">Tomorrow Morning</button>
-            <button id="tomorrowafternoon">Tomorrow Afternoon</button>
-            <button id="twodaysmorning">Two Days Morning</button>
-            <button id="twodaysafternoon">Two Days Afternoon</button>
+
+        <!-- Day and Time Selection Display -->
+        <div id="day-time-selection">
+            Selected: <span id="day-time-text">Today Morning</span>
+        </div>
+
+        <!-- Time slider beneath the map -->
+        <div id="bottom-slider">
+            <input type="range" min="0" max="5" value="0" class="slider" id="timeSlider">
+        </div>
+
         <!-- Map Section -->
         <div id="map"></div>
-
-
-        </div>
     </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="./script.js"></script>
-    
+
+    <script>
+        // Define time options
+        const timeOptions = [
+            'Today Morning',
+            'Today Afternoon',
+            'Tomorrow Morning',
+            'Tomorrow Afternoon',
+            'Two Days Morning',
+            'Two Days Afternoon'
+        ];
+
+        // Get slider and text elements
+        const timeSlider = document.getElementById('timeSlider');
+        const dayTimeText = document.getElementById('day-time-text');
+
+        // Update the text based on the slider value
+        timeSlider.addEventListener('input', function() {
+            dayTimeText.textContent = timeOptions[this.value];
+        });
+    </script>
 </body>
 </html>

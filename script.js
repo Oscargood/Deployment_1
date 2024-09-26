@@ -1,5 +1,5 @@
 // Initialize the map and set its view to New Zealand with a zoom level
-var map = L.map("map").setView([-43.446754, 171.592242], 7);
+var map = L.map("map").setView([-43.446754, 171.592242], 1);
 
 // Add a tile layer from OpenStreetMap
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -174,40 +174,32 @@ async function toggleBehaviourCirclesLayer() {
   }
 }
 
-// Event listeners for buttons
-document.getElementById("todaymorning").addEventListener("click", async () => {
-  await displayWeatherDecision(0, 'morning'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(0, 'morning'); // Call behaviour decisions
-});
-
-document.getElementById("todayafternoon").addEventListener("click", async () => {
-  await displayWeatherDecision(0, 'afternoon'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(0, 'afternoon'); // Call behaviour decisions
-});
-
-document.getElementById("tomorrowmorning").addEventListener("click", async () => {
-  await displayWeatherDecision(1, 'morning'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(1, 'morning'); // Call behaviour decisions
-});
-
-document.getElementById("tomorrowafternoon").addEventListener("click", async () => {
-  await displayWeatherDecision(1, 'afternoon'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(1, 'afternoon'); // Call behaviour decisions
-});
-
-document.getElementById("twodaysmorning").addEventListener("click", async () => {
-  await displayWeatherDecision(2, 'morning'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(2, 'morning'); // Call behaviour decisions
-});
-
-document.getElementById("twodaysafternoon").addEventListener("click", async () => {
-  await displayWeatherDecision(2, 'afternoon'); // Wait for weather decisions to complete
-  await displayBehaviourDecision(2, 'afternoon'); // Call behaviour decisions
-});
-
-// Add buttons to toggle circles visibility
+// Event listeners for toggling the layers
 document.getElementById("toggleWeatherCircles").addEventListener("click", toggleWeatherCirclesLayer);
 document.getElementById("toggleBehaviourCircles").addEventListener("click", toggleBehaviourCirclesLayer);
 
+// Function to handle slider input
+const timeSlider = document.getElementById('timeSlider');
+const dayTimeText = document.getElementById('day-time-text');
+
+// Define time options and their corresponding day offsets and periods
+const timeOptions = [
+  { label: 'Today Morning', dayOffset: 0, timePeriod: 'morning' },
+  { label: 'Today Afternoon', dayOffset: 0, timePeriod: 'afternoon' },
+  { label: 'Tomorrow Morning', dayOffset: 1, timePeriod: 'morning' },
+  { label: 'Tomorrow Afternoon', dayOffset: 1, timePeriod: 'afternoon' },
+  { label: 'Two Days Morning', dayOffset: 2, timePeriod: 'morning' },
+  { label: 'Two Days Afternoon', dayOffset: 2, timePeriod: 'afternoon' }
+];
+
+// Update the text and map based on the slider value
+timeSlider.addEventListener('input', async function() {
+  const selectedOption = timeOptions[this.value];
+  dayTimeText.textContent = selectedOption.label;
+  await displayWeatherDecision(selectedOption.dayOffset, selectedOption.timePeriod);
+  await displayBehaviourDecision(selectedOption.dayOffset, selectedOption.timePeriod);
+});
+
 // Initial call to display today's weather decisions for the morning
 displayWeatherDecision(0, 'morning');
+displayBehaviourDecision(0, 'morning');

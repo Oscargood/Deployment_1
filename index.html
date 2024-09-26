@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildvision</title>
 
-    
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -37,10 +36,11 @@
             Selected: <span id="day-time-text">Today Morning</span>
         </div>
 
-        <!-- Time slider beneath the map -->
-        <div id="bottom-slider">
-            <input type="range" min="0" max="5" value="0" class="slider" id="timeSlider">
-        </div>
+        <!-- Time slider above the map -->
+<div id="bottom-slider">
+    <input type="range" min="0" max="23" value="0" class="slider" id="timeSlider">
+</div>
+
 
         <!-- Map Section -->
         <div id="map"></div>
@@ -51,7 +51,7 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Welcome to Wildvision</h2>
-            <p>Wildvision give you the information you need to increase you hunt successes. You will see 2 overlays, weather and animal behaviour. Each overlay works on a traffic light system. For weather, green = huntable conditions, orange = marginal and red = you should earn brownie points. For Animal behaviour green = areas with high animal movements, organge = medium animal movements and red = minimal movement.The animal behaviour overlay is designed to let you know what animals are doing if they are there.
+            <p>Wildvision give you the information you need to increase you hunt successes. You will see 2 overlays, weather and animal behaviour. Each overlay works on a traffic light system. For weather, green = huntable conditions, orange = marginal and red = you should earn brownie points. For Animal behaviour green = areas with high animal movements, organge = medium animal movements and red = minimal movement.The animal behaviour overlay is designed to let you know what animals are doing if they are in the area.
             </p>
         </div>
     </div>

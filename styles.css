@@ -8,9 +8,8 @@ body {
     align-items: center; /* Align logo and input vertically in the middle */
     justify-content: space-between; /* Space between the logo and input */
     background-color: var(--container-bg-color, #2b2929); /* Adjustable background */
-    padding: 20px
+    padding: 20px;
 }
-
 
 /* Adjust the logo size */
 #logo {
@@ -42,7 +41,8 @@ body {
 #map {
     width: 100%;
     height: 600px;
-    background-color: var(--background-color, #252424); /* Adjustable map background */}
+    background-color: var(--background-color, #252424); /* Adjustable map background */
+}
 
 /* Customizable button styles */
 button {
@@ -58,4 +58,55 @@ button {
 
 button:hover {
     opacity: 0.8;
+}
+
+/* Styling for the slider container */
+#bottom-slider {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Styling for the range slider */
+.slider {
+    width: 80%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: #ccc;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+/* Custom handle styling */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #444;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #444;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Day and time selection display */
+#day-time-selection {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
 }

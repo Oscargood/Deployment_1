@@ -1,3 +1,30 @@
+// Modal Popup Logic
+const modal = document.getElementById('popupModal'); // Reference to the modal element
+const infoButton = document.getElementById('infoButton'); // Reference to the "Info" button
+const closeModal = document.querySelector('.close'); // Reference to the close (X) button
+
+// Show the modal when the page loads
+window.onload = function() {
+    modal.style.display = 'block'; // Show the modal
+}
+
+// When the user clicks the "Info" button, show the modal
+infoButton.onclick = function() {
+    modal.style.display = 'block'; // Show the modal when Info button is clicked
+}
+
+// When the user clicks on the close button (x), hide the modal
+closeModal.onclick = function() {
+    modal.style.display = 'none'; // Hide the modal when the close button is clicked
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none'; // Hide the modal if the user clicks outside the modal
+    }
+}
+
 // Initialize the map and set its view to New Zealand with a zoom level
 var map = L.map("map").setView([-43.446754, 171.592242], 1);
 
@@ -174,9 +201,31 @@ async function toggleBehaviourCirclesLayer() {
   }
 }
 
-// Event listeners for toggling the layers
-document.getElementById("toggleWeatherCircles").addEventListener("click", toggleWeatherCirclesLayer);
-document.getElementById("toggleBehaviourCircles").addEventListener("click", toggleBehaviourCirclesLayer);
+// Toggle Weather Circles and highlight button
+document.getElementById("toggleWeatherCircles").addEventListener("click", function () {
+  const weatherButton = this; // Reference the clicked button
+
+  if (map.hasLayer(weatherCirclesLayer)) {
+    map.removeLayer(weatherCirclesLayer);
+    weatherButton.classList.remove("selected"); // Remove selected class when layer is hidden
+  } else {
+    map.addLayer(weatherCirclesLayer);
+    weatherButton.classList.add("selected"); // Add selected class when layer is shown
+  }
+});
+
+// Toggle Behaviour Circles and highlight button
+document.getElementById("toggleBehaviourCircles").addEventListener("click", function () {
+  const behaviourButton = this; // Reference the clicked button
+
+  if (map.hasLayer(behaviourCirclesLayer)) {
+    map.removeLayer(behaviourCirclesLayer);
+    behaviourButton.classList.remove("selected"); // Remove selected class when layer is hidden
+  } else {
+    map.addLayer(behaviourCirclesLayer);
+    behaviourButton.classList.add("selected"); // Add selected class when layer is shown
+  }
+});
 
 // Function to handle slider input
 const timeSlider = document.getElementById('timeSlider');
@@ -200,6 +249,28 @@ timeSlider.addEventListener('input', async function() {
   await displayBehaviourDecision(selectedOption.dayOffset, selectedOption.timePeriod);
 });
 
+// Array of animal behaviour notes
+const behaviourNotes = [
+  "Animals are most active at dawn and dusk.",
+  "Weather conditions can significantly impact animal movement.",
+  "Animals are active feeding on spring growth",
+  "Tahr have been sighted feeding around the 900m mark",
+  "Stags are feeding in open country with bachelor groups",
+  "Hinds are preffering dense vegetation as they birth and raise their fawns"
+];
+
+// Reference to the static text box
+const behaviourTextBox = document.getElementById("static_text_box");
+
+// Set an interval to cycle through the notes every 5 seconds (5000 ms)
+let noteIndex = 0;
+setInterval(() => {
+  // Update the text content with the current note
+  behaviourTextBox.textContent = behaviourNotes[noteIndex];
+  
+  // Increment the index and reset if it exceeds the number of notes
+  noteIndex = (noteIndex + 1) % behaviourNotes.length;
+}, 5000); // Change text every 5 seconds
 // Initial call to display today's weather decisions for the morning
 displayWeatherDecision(0, 'morning');
 displayBehaviourDecision(0, 'morning');

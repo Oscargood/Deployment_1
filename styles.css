@@ -11,12 +11,6 @@ body {
     padding: 20px;
 }
 
-/* Adjust the logo size */
-#logo {
-    width: var(--logo-width, 250px); /* Adjustable logo width */
-    height: auto;
-}
-
 /* Styling for the static text box */
 #static_text_box {
     padding: 10px;
